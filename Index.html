@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación Técnica Integral - Auxiliar de Producción</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 25px;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 5px solid #2c3e50;
+        }
+        .input-group input {
+            width: 95%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .module-title {
+            background-color: #2c3e50;
+            color: white;
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 35px;
+            font-size: 1.2em;
+        }
+        .scenario-box {
+            background-color: #e8f4f8;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin-bottom: 25px;
+        }
+        .scenario-box-critical {
+            background-color: #fff3e0;
+            border-left: 5px solid #e67e22;
+            padding: 15px;
+            margin-bottom: 25px;
+        }
+        .scenario-box-provider {
+            background-color: #f4e8f8;
+            border-left: 5px solid #9b59b6;
+            padding: 15px;
+            margin-bottom: 25px;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+        }
+        .options label:hover {
+            background-color: #eef2f5;
+        }
+        .options input {
+            margin-right: 10px;
+        }
+        .btn-enviar {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 30px;
+            font-weight: bold;
+            display: block;
+        }
+        .btn-enviar:hover {
+            background-color: #219150;
+        }
+        #evaluator-section {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px dashed #2c3e50;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+        #evaluator-section h3 {
+            color: #c0392b;
+            text-align: center;
+            margin-top: 0;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+        .btn-accion {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+        .btn-accion:hover {
+            background-color: #1c5980;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Productos Medellín S.A. de C.V.</h1>
+        <h2>Evaluación Técnica de Ingreso: Auxiliar de Producción</h2>
+        <p>Departamento de Recursos Humanos | Casos Operativos y SGSA</p>
+    </div>
+
+    <form id="evaluacionForm">
+        
+        <div class="input-group">
+            <label for="nombreCandidato"><strong>Nombre completo del candidato:</strong></label>
+            <input type="text" id="nombreCandidato" placeholder="Ingrese su nombre completo" required>
+        </div>
+
+        <h3 class="module-title">Módulo I: Preparación de Formulaciones</h3>
+        <div class="scenario-box">
+            <p><strong>Situación:</strong> Eres el Auxiliar de Producción del turno. Se te ha asignado preparar la mezcla de especias para la producción del día siguiente. El producto es un adobo rojo para esterilizado en presentación de 400 g.</p>
+            <p>El procedimiento consiste en pesar cada ingrediente por separado y depositarlo en una bolsa de plástico. Una vez que los polvos caen en la bolsa, quedan mezclados y no pueden separarse.</p>
+            <p>Al terminar de pesar el último ingrediente, revisas tu registro y detectas que la sal comestible fue pesada con un exceso del 10%. La sal ya está en la bolsa y los polvos están parcialmente mezclados. El turno siguiente inicia en 45 minutos y tu supervisor no se encuentra físicamente en la planta.</p>
+        </div>
+
+        <div class="question">
+            <p><strong>1. Acabas de detectar el error en el pesado. ¿Cuál es tu primera acción?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="incorrect"> A) Continuar el proceso y asumir que un 10% de exceso de sal no afectará significativamente el producto final.</label>
+                <label><input type="radio" name="q1" value="correct"> B) Detener inmediatamente la actividad de pesado, apartar e identificar la bolsa con error y no utilizarla en producción.</label>
+                <label><input type="radio" name="q1" value="incorrect"> C) Intentar sacar la sal de la bolsa manualmente para corregir el peso.</label>
+                <label><input type="radio" name="q1" value="redflag"> D) Desechar la bolsa sin avisar a nadie y empezar a pesar de nuevo.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>2. El supervisor no está en planta. ¿Tienes autoridad para decidir qué hacer con la bolsa y proceder sin informar a nadie?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="redflag"> A) Sí, porque conozco el proceso y el error no es tan grave. Puedo resolverlo por mi cuenta.</label>
+                <label><input type="radio" name="q2" value="redflag"> B) Sí, porque si espero al supervisor el turno se retrasará y eso tiene consecuencias.</label>
+                <label><input type="radio" name="q2" value="correct"> C) No. Mi facultad es detener la operación y notificar de inmediato. La decisión sobre el lote corresponde al supervisor o jefe de planta.</label>
+                <label><input type="radio" name="q2" value="incorrect"> D) Depende: si tengo experiencia suficiente puedo decidir; si no, aviso al supervisor.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>3. Tu supervisor no está físicamente en planta y el turno inicia en 45 minutos. ¿Qué haces?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="incorrect"> A) Espero a que llegue el supervisor sin hacer nada más.</label>
+                <label><input type="radio" name="q3" value="redflag"> B) Como no está, decido yo qué hacer para no perder tiempo.</label>
+                <label><input type="radio" name="q3" value="correct"> C) Contacto al supervisor por teléfono. Si no responde, contacto al Jefe de Planta. Mantengo la mezcla aislada e identificada hasta recibir instrucción.</label>
+                <label><input type="radio" name="q3" value="incorrect"> D) Le pregunto a otro compañero operador qué opina y actuamos juntos.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>4. El supervisor te autoriza a manejar el error. ¿Cuál es la opción técnica correcta para una mezcla en la que se añadió un 10% extra de sal y los demás ingredientes ya están mezclados?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="incorrect"> A) Usar la mezcla tal como está, sin ajuste, porque el error es pequeño.</label>
+                <label><input type="radio" name="q4" value="correct"> B) Llevar todos los demás ingredientes al mismo porcentaje de exceso (10% más de cada uno) para mantener las proporciones. El excedente se reserva identificado.</label>
+                <label><input type="radio" name="q4" value="incorrect"> C) Añadir agua a la mezcla para diluir la sal extra.</label>
+                <label><input type="radio" name="q4" value="incorrect"> D) Desechar siempre la mezcla; no existe otra alternativa.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>5. ¿Por qué es importante no usar la mezcla con el error sin autorización previa del supervisor o de Calidad?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="incorrect"> A) Porque el supervisor podría molestarse si actúas sin avisarle.</label>
+                <label><input type="radio" name="q5" value="correct"> B) Porque un exceso de sal podría afectar el perfil organoléptico, las especificaciones técnicas y el cumplimiento normativo ante TIF y el SGSA.</label>
+                <label><input type="radio" name="q5" value="incorrect"> C) Porque el reglamento prohíbe cualquier cambio en la rutina, aunque sea mínimo.</label>
+                <label><input type="radio" name="q5" value="incorrect"> D) Porque la sal es un alérgeno y su exceso representa un peligro biológico grave.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>6. Independientemente de cómo se resuelva el error, ¿qué debe quedar documentado?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="incorrect"> A) Nada; si el problema se resuelve no es necesario dejarlo por escrito.</label>
+                <label><input type="radio" name="q6" value="incorrect"> B) Solo el peso final de la bolsa corregida en el formato de pesado.</label>
+                <label><input type="radio" name="q6" value="correct"> C) El error detectado (ingrediente y cantidades), el reporte al supervisor (horario y medio), la instrucción recibida y la disposición final del lote.</label>
+                <label><input type="radio" name="q6" value="redflag"> D) Un reporte anónimo para que no quede en el expediente.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>7. Para evitar que este error vuelva a ocurrir, ¿qué práctica de control podría implementarse durante el pesado?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="incorrect"> A) Pesar todos los ingredientes al mismo tiempo para ahorrar tiempo.</label>
+                <label><input type="radio" name="q7" value="correct"> B) Verificar el peso de cada ingrediente en la báscula y registrarlo en la bitácora al momento del pesado, antes de depositarlo en la bolsa.</label>
+                <label><input type="radio" name="q7" value="incorrect"> C) No hacer formulaciones con anticipación; preparar siempre en el momento de producción.</label>
+                <label><input type="radio" name="q7" value="incorrect"> D) Confiar en la memoria y la experiencia del operador para no necesitar registros.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>8. Un compañero te dice: "Yo ya lo hice así otras veces y nunca pasó nada, hazlo tú también sin avisar." ¿Qué haces?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="redflag"> A) Hago lo que mi compañero dice porque él tiene más experiencia.</label>
+                <label><input type="radio" name="q8" value="correct"> B) Lo consulto primero con el supervisor o jefe de planta antes de actuar, independientemente de lo que diga el compañero.</label>
+                <label><input type="radio" name="q8" value="redflag"> C) Decido según mi criterio personal en ese momento.</label>
+                <label><input type="radio" name="q8" value="redflag"> D) Ignoro el error completamente para no crear conflicto con el compañero.</label>
+            </div>
+        </div>
+
+
+        <h3 class="module-title">Módulo II: Desviación en el Esterilizado (PCC1) y Codificado Erróneo</h3>
+        <div class="scenario-box-critical">
+            <p><strong>Situación:</strong> Estás operando el área de esterilizado y empaque procesando un lote de deshebrada de res (400 g). Al revisar el registro F-CA-06 al finalizar el ciclo, detectas que durante el sostenimiento la temperatura del autoclave bajó 3°C del parámetro establecido durante aprox. 4 minutos, antes de recuperarse sola. El equipo no emitió alarma. El lote ya salió del autoclave y está en los carritos.</p>
+            <p>Adicionalmente, al revisar el primer envase ya codificado detectas que la fecha de caducidad impresa corresponde a otro producto (lote anterior de cochinita pibil). El codificador no fue verificado al inicio. Ya se codificaron 200 piezas aproximadamente.</p>
+            <p><strong>Condición:</strong> El supervisor está en planta. El turno termina en 2 horas y el cliente espera el embarque de este lote mañana por la mañana.</p>
+        </div>
+
+        <div class="question">
+            <p><strong>9. De las dos situaciones detectadas, ¿cuál representa el riesgo más crítico para la inocuidad del producto y por qué?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="incorrect"> A) La del codificado, porque el cliente recibirá información incorrecta en el empaque.</label>
+                <label><input type="radio" name="q9" value="correct"> B) La desviación en el esterilizado, porque es un PCC y una temperatura fuera de especificación pone en riesgo la esterilidad comercial del producto (posibilidad de Clostridium botulinum).</label>
+                <label><input type="radio" name="q9" value="incorrect"> C) Ambas son igual de graves porque las dos afectan al producto terminado.</label>
+                <label><input type="radio" name="q9" value="redflag"> D) La del codificado, porque ya hay 200 piezas afectadas y es más urgente de resolver.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>10. Detectas la desviación en el esterilizado. ¿Qué haces primero?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="redflag"> A) Pasar el lote a la siguiente etapa normalmente porque el equipo se recuperó solo y el ciclo terminó.</label>
+                <label><input type="radio" name="q10" value="redflag"> B) Revisar si la baja de temperatura fue significativa y decidir por cuenta propia si el lote puede continuar.</label>
+                <label><input type="radio" name="q10" value="correct"> C) Detener el avance del lote, identificarlo y aislarlo inmediatamente, y notificar de forma urgente al supervisor y a Calidad para que evalúen la disposición del producto.</label>
+                <label><input type="radio" name="q10" value="redflag"> D) Registrar la desviación en F-CA-06 y continuar el proceso; el registro es suficiente acción correctiva.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>11. El supervisor llega y te dice: "Igual y sí pasó el proceso, mételos al detector de metales y que sigan." ¿Qué haces?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="redflag"> A) Obedezco porque el supervisor tiene autoridad sobre mí en el proceso.</label>
+                <label><input type="radio" name="q11" value="incorrect"> B) Le digo que primero quiero revisar el registro nuevamente antes de continuar.</label>
+                <label><input type="radio" name="q11" value="correct"> C) Le comunico respetuosamente que una desviación en un PCC requiere evaluación formal por parte de Calidad antes de continuar, y solicito que se les involucre antes de tomar cualquier decisión.</label>
+                <label><input type="radio" name="q11" value="redflag"> D) Continúo el proceso pero dejo constancia escrita de que el supervisor me lo indicó.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>12. El personal de Calidad llega a evaluar el lote. ¿Qué información debes tener lista para facilitarles la evaluación?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q12" value="incorrect"> A) El número de lote y la cantidad de piezas producidas.</label>
+                <label><input type="radio" name="q12" value="correct"> B) El registro F-CA-06 con los datos del ciclo (tiempo, temperatura), la temperatura inicial del primer envase, cantidad de envases afectados, hora exacta y duración de la desviación.</label>
+                <label><input type="radio" name="q12" value="incorrect"> C) El nombre del producto y la fecha de producción.</label>
+                <label><input type="radio" name="q12" value="incorrect"> D) El registro del codificado F-CA-05 y el número de envases codificados.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>13. Calidad evalúa el ciclo y determina que el lote debe ser incubado de forma extendida (retenido). El cliente espera el embarque mañana. ¿Cuál es tu postura?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q13" value="redflag"> A) Informo al cliente por mi cuenta que habrá retraso para que no haya problemas.</label>
+                <label><input type="radio" name="q13" value="incorrect"> B) Le propongo a Calidad liberar la mitad del lote que sí estuvo dentro del ciclo correcto.</label>
+                <label><input type="radio" name="q13" value="correct"> C) Acepto la decisión de Calidad, la registro en los formatos correspondientes, y comunico al supervisor la situación para que gestione el tema con logística. No me corresponde liberar lotes.</label>
+                <label><input type="radio" name="q13" value="redflag"> D) Pido a Calidad que libere el lote bajo responsabilidad del supervisor para no afectar el embarque.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>14. Ahora atiendes el problema del codificado erróneo. Ya hay 200 piezas afectadas. ¿Cuál es el procedimiento correcto?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q14" value="incorrect"> A) Revisar cuáles piezas tienen el código malo, separarlas y reportarlas a Calidad para que decidan.</label>
+                <label><input type="radio" name="q14" value="incorrect"> B) Detener el codificado, corregir el equipo y continuar; las 200 piezas malas se recodifican después.</label>
+                <label><input type="radio" name="q14" value="correct"> C) Detener el codificado, apartar las 200 piezas, notificar al supervisor y Calidad, corregir la configuración del codificador y registrar el evento. Las piezas se recodifican con autorización de Calidad.</label>
+                <label><input type="radio" name="q14" value="redflag"> D) Desechar las 200 piezas para evitar que salgan al mercado con información incorrecta.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>15. ¿Por qué ocurrió el error de codificado y qué práctica habría evitado que escalara a 200 piezas?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q15" value="incorrect"> A) Porque el codificador falló; el equipo debe ser revisado por mantenimiento.</label>
+                <label><input type="radio" name="q15" value="incorrect"> B) Porque no había suficiente personal en el turno para supervisar todo al mismo tiempo.</label>
+                <label><input type="radio" name="q15" value="correct"> C) Porque no se verificó la configuración inicial. Se debió revisar los datos del codificador con la especificación E-CA-05 y verificar visualmente el primer envase codificado antes de continuar.</label>
+                <label><input type="radio" name="q15" value="incorrect"> D) Porque el sistema no tiene doble verificación; eso es responsabilidad de Calidad, no del Auxiliar.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>16. Al final del turno, ¿qué debe quedar documentado de todo lo ocurrido hoy?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q16" value="incorrect"> A) El reporte al supervisor de ambas situaciones y las acciones que se tomaron.</label>
+                <label><input type="radio" name="q16" value="redflag"> B) Solo la desviación del esterilizado porque es el PCC; el codificado es un error menor.</label>
+                <label><input type="radio" name="q16" value="incorrect"> C) El registro del ciclo de esterilizado (F-CA-06) y el número de piezas recodificadas (F-CA-05).</label>
+                <label><input type="radio" name="q16" value="correct"> D) Todo lo anterior más: hora/magnitud de la desviación PCC1, disposición indicada por Calidad, piezas retenidas, error de codificado (200 piezas), acción correctiva aplicada y responsables que intervinieron.</label>
+            </div>
+        </div>
+
+        <h3 class="module-title">Módulo III: Recepción de Materia Prima</h3>
+        <div class="scenario-box-provider">
+            <p><strong>Contexto:</strong> Un proveedor entrega chiles secos SIN Certificado de Calidad. Compras le llama: "Recibe el material, necesitamos producir hoy, el certificado te lo mando luego".</p>
+        </div>
+
+        <div class="question">
+            <p><strong>17. ¿Cuál es su facultad ante esta situación?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q17" value="redflag"> A) Recibir el material, ya que Compras autorizó la recepción.</label>
+                <label><input type="radio" name="q17" value="correct"> B) Detener la recepción e informar a Calidad. Tengo la facultad de rechazar materia prima que incumple especificaciones.</label>
+                <label><input type="radio" name="q17" value="incorrect"> C) Pedirle al chofer que firme una hoja en blanco y descargar.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>18. Si ingresa la materia prima sin certificado, ¿qué riesgo principal asume la planta?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q18" value="incorrect"> A) Que Compras reciba una amonestación.</label>
+                <label><input type="radio" name="q18" value="incorrect"> B) Que el producto tenga otro color.</label>
+                <label><input type="radio" name="q18" value="correct"> C) Pérdida total de trazabilidad y un incumplimiento normativo grave ante SENASICA/TIF.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p><strong>19. ¿Qué documentación debe llenar si rechaza el camión?</strong></p>
+            <div class="options">
+                <label><input type="radio" name="q19" value="correct"> A) Reporte de desviación/rechazo de materia prima, notificando a Calidad y Almacén.</label>
+                <label><input type="radio" name="q19" value="incorrect"> B) Únicamente el gafete de salida del chofer.</label>
+                <label><input type="radio" name="q19" value="redflag"> C) Ninguna, si no se descargó no hay que documentar.</label>
+            </div>
+        </div>
+
+        <button type="button" class="btn-enviar" onclick="finalizarEvaluacion()">Finalizar Evaluación Técnica</button>
+
+    </form>
+
+    <div id="evaluator-section">
+        <h3>ÁREA EXCLUSIVA PARA EL EVALUADOR / RECURSOS HUMANOS</h3>
+        <p>Evaluación concluida. A continuación se presenta el reporte para Recursos Humanos. Se ha intentado descargar automáticamente un archivo <strong>.txt</strong>. Si su navegador lo bloqueó, puede copiar el texto de la caja inferior.</p>
+        
+        <textarea id="textoReporte" readonly></textarea>
+        
+        <button type="button" class="btn-accion" onclick="descargarManual()">📥 Forzar Descarga TXT</button>
+        <button type="button" class="btn-accion" onclick="copiarAlPortapapeles()">📋 Copiar Reporte para Correo</button>
+    </div>
+
+</div>
+
+<script>
+    let reporteGenerado = "";
+    let nombreArchivo = "";
+
+    function finalizarEvaluacion() {
+        const nombre = document.getElementById('nombreCandidato').value.trim();
+        if (!nombre) {
+            alert("El candidato debe ingresar su nombre antes de finalizar.");
+            return;
+        }
+
+        const form = document.getElementById('evaluacionForm');
+        let score = 0;
+        let totalQuestions = 19; 
+        let hasRedFlag = false;
+        let answeredAll = true;
+        const pointsPerQuestion = 100 / totalQuestions;
+        let desgloseRespuestas = "";
+
+        // Evaluar todas las respuestas
+        for (let i = 1; i <= totalQuestions; i++) {
+            const answer = form.querySelector(`input[name="q${i}"]:checked`);
+            if (!answer) {
+                answeredAll = false;
+                break;
+            }
+            
+            let status = "";
+            if (answer.value === 'correct') {
+                score += pointsPerQuestion;
+                status = "✔️ CORRECTA";
+            } else if (answer.value === 'redflag') {
+                hasRedFlag = true;
+                status = "🚩 INCORRECTA (BANDERA ROJA CRÍTICA)";
+            } else {
+                status = "❌ INCORRECTA";
+            }
+            
+            let textoOpcion = answer.parentElement.innerText.trim();
+            desgloseRespuestas += `P${i}: ${textoOpcion}\nEstatus: ${status}\n\n`;
+        }
+
+        if (!answeredAll) {
+            alert("Por favor, responda todas las preguntas (1 a 19) de la evaluación antes de finalizar.");
+            return;
+        }
+
+        score = Math.round(score);
+        
+        let dictamen = "";
+        let notas = "";
+        
+        // Criterios actualizados basados en la rúbrica
+        if (hasRedFlag) {
+            dictamen = "NO APTO (RECHAZAR)";
+            notas = "El candidato seleccionó opciones de ALTO RIESGO. Su criterio incluye priorizar tiempos comerciales sobre la inocuidad (PCC), dejarse influenciar negativamente por supervisores/compañeros para omitir a Calidad, o considerar errores de codificado como 'menores'. Representa un riesgo grave para el sistema TIF y el SGSA.";
+        } else if (score >= 80) {
+            dictamen = "APTO (RECOMENDADO)";
+            notas = "El candidato demostró excelente criterio operativo integral. Identifica claramente la jerarquía de riesgos (PCC vs Calidad), involucra activamente a Calidad sin ceder a presiones operativas/comerciales y comprende perfectamente la necesidad de documentación exhaustiva.";
+        } else {
+            dictamen = "NO APTO (PUNTAJE INSUFICIENTE)";
+            notas = "El candidato no cometió faltas críticas de riesgo, pero no alcanzó el puntaje técnico mínimo. Carece de la asertividad necesaria para hacer cumplir los protocolos de inocuidad en situaciones bajo presión.";
+        }
+
+        const fecha = new Date().toLocaleString('es-MX');
+        reporteGenerado = 
+`==================================================
+REPORTE TÉCNICO DE CONTRATACIÓN: AUXILIAR DE PRODUCCIÓN
+PRODUCTOS MEDELLÍN S.A. DE C.V.
+==================================================
+FECHA DE APLICACIÓN: ${fecha}
+CANDIDATO: ${nombre.toUpperCase()}
+
+CALIFICACIÓN OBTENIDA: ${score} / 100
+DICTAMEN FINAL: ${dictamen}
+
+OBSERVACIONES TÉCNICAS:
+${notas}
+
+==================================================
+DESGLOSE DE RESPUESTAS DEL CANDIDATO:
+==================================================
+${desgloseRespuestas}
+Fin del reporte de evaluación.`;
+
+        // Mostrar resultados
+        form.style.display = 'none';
+        const evalSection = document.getElementById('evaluator-section');
+        evalSection.style.display = 'block';
+        
+        document.getElementById('textoReporte').value = reporteGenerado;
+        nombreArchivo = `Reporte_RH_Auxiliar_${nombre.replace(/\s+/g, '_')}.txt`;
+
+        descargarManual();
+    }
+
+    function descargarManual() {
+        const blob = new Blob([reporteGenerado], { type: 'text/plain;charset=utf-8' });
+        const enlace = document.createElement('a');
+        enlace.href = URL.createObjectURL(blob);
+        enlace.download = nombreArchivo;
+        document.body.appendChild(enlace);
+        enlace.click();
+        document.body.removeChild(enlace);
+    }
+
+    function copiarAlPortapapeles() {
+        const textoArea = document.getElementById('textoReporte');
+        textoArea.select();
+        document.execCommand('copy');
+        alert("¡El reporte ha sido copiado! Ya puedes pegarlo en tu correo para RH.");
+    }
+</script>
+
+</body>
+</html>
